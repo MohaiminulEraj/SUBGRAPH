@@ -1,0 +1,19 @@
+{
+  "name": "farm-auctions",
+  "description": "PancakeSwap Subgraph",
+  "version": "1.0.0",
+  "repository": "git@github.com:pancakeswap/pancake-subgraph.git",
+  "author": "PancakeSwap",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "codegen": "graph codegen subgraph.yaml",
+    "build": "graph build subgraph.yaml",
+    "deploy": "graph deploy --product hosted-service --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ pancakeswap/farm-auctions subgraph.yaml",
+    "create-local": "graph create --node http://localhost:8020/ pancakeswap/farm-auctions",
+    "remove-local": "graph remove --node http://localhost:8020/ pancakeswap/farm-auctions",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 pancakeswap/farm-auctions",
+    "prepare:ropsten": "mustache config/ropsten-config.json subgraph.template.yaml > subgraph.yaml",
+    "deploy:ropsten": "yarn prepare:ropsten && graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ pancakeswap/farm-auctions-ropsten",
+    "prepare:mainnet": "mustache config/mainnet-config.json subgraph.template.yaml > subgraph.yaml"
+  }
+}
